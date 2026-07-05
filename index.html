@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Check - Verification</title>
-
-    <!-- ⚠️ EL-CODE MTA' MONETAG L-ASLI MTAGRA3 HNA 100% FI L-HEAD ⚠️ -->
+    
+    <!-- Monetag Script Layer -->
     <script src="https://omg10.com/4/10669270" async data-cfasync="false"></script>
 
     <style>
@@ -15,7 +14,6 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: Roboto, Arial, sans-serif;
             background-color: #f3f3f5;
@@ -29,13 +27,12 @@
             text-align: center;
         }
 
-        /* Background Loader View */
+        /* Background Loader */
         .bg-container {
             max-width: 450px;
             padding: 20px;
             opacity: 0.3;
         }
-
         .spinner {
             border: 3px solid rgba(0, 0, 0, 0.05);
             width: 32px;
@@ -45,18 +42,9 @@
             animation: spin 0.8s linear infinite;
             margin: 20px auto;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Modern Box Card - Clean & Small */
+        /* Modal overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -70,7 +58,6 @@
             justify-content: center;
             z-index: 99999;
         }
-
         .modal-box {
             background: #ffffff;
             border-radius: 12px;
@@ -84,20 +71,12 @@
             padding: 30px 24px 24px 24px;
             animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* El-X sghir mkhabba */
+        /* X button */
         .modal-close-x {
             position: absolute;
             top: 12px;
@@ -110,10 +89,7 @@
             padding: 5px;
             line-height: 1;
         }
-
-        .modal-close-x:hover {
-            color: #8e8e93;
-        }
+        .modal-close-x:hover { color: #8e8e93; }
 
         .modal-text {
             font-size: 14.5px;
@@ -122,7 +98,7 @@
             margin-bottom: 24px;
         }
 
-        /* --- RECAPTCHA WIDGET CLONE FROM IMAGE_618003.PNG --- */
+        /* reCAPTCHA Widget */
         .recaptcha-box {
             background-color: #f9f9f9;
             border: 1px solid #d3d3d3;
@@ -136,14 +112,11 @@
             cursor: pointer;
             user-select: none;
         }
-
         .recaptcha-left {
             display: flex;
             align-items: center;
             gap: 14px;
         }
-
-        /* Checkbox square from image_618003.png */
         .captcha-checkbox {
             width: 28px;
             height: 28px;
@@ -155,8 +128,6 @@
             justify-content: center;
             transition: all 0.2s ease;
         }
-
-        /* Loading Spinner */
         .captcha-spinner {
             display: none;
             width: 18px;
@@ -166,16 +137,11 @@
             border-left-color: transparent;
             animation: spin 0.6s linear infinite;
         }
-
-        /* Text font from image_618003.png */
         .recaptcha-text {
             font-size: 15px;
             color: #000000;
             font-weight: 400;
-            font-family: 'Roboto', 'Arial', sans-serif;
         }
-
-        /* Right side branding from image_618003.png */
         .recaptcha-right {
             display: flex;
             flex-direction: column;
@@ -183,7 +149,6 @@
             justify-content: center;
             padding-top: 4px;
         }
-
         .recaptcha-logo-img {
             width: 26px;
             height: 26px;
@@ -191,7 +156,6 @@
             background-size: contain;
             margin-bottom: 2px;
         }
-
         .recaptcha-links {
             font-size: 10px;
             color: #777;
@@ -199,85 +163,89 @@
             line-height: 1.2;
             text-align: center;
         }
-
-        .recaptcha-sublinks {
-            font-size: 8px;
-            color: #9b9b9b;
-        }
+        .recaptcha-sublinks { font-size: 8px; color: #9b9b9b; }
     </style>
 </head>
-
 <body>
 
-    <div class="bg-container">
-        <div class="spinner"></div>
-        <h1>Loading secure connection...</h1>
-    </div>
+<div class="bg-container">
+    <div class="spinner"></div>
+    <h1>Loading secure connection...</h1>
+</div>
 
-    <div class="modal-overlay" id="securityModal">
-        <div class="modal-box">
-
-            <!-- El-X taskir (Triggeri Monetag) -->
-            <button class="modal-close-x" onclick="triggerMonetag('X')">&times;</button>
-
-            <!-- Community Safe custom wording -->
-            <div class="modal-text">
-                Please help us keeping our community safe by checking the security box below to confirm you are not a
-                bot.
-            </div>
-
-            <!-- RECAPTCHA BOX WIDGET -->
-            <div class="recaptcha-box" onclick="triggerCaptchaClick()">
-                <div class="recaptcha-left">
-                    <div class="captcha-checkbox" id="captchaBox">
-                        <div class="captcha-spinner" id="captchaLoader"></div>
-                    </div>
-                    <div class="recaptcha-text" id="captchaText">I'm not a robot</div>
-                </div>
-                <div class="recaptcha-right">
-                    <div class="recaptcha-logo-img"></div>
-                    <div class="recaptcha-links">reCAPTCHA</div>
-                    <div class="recaptcha-sublinks">Privacy - Terms</div>
-                </div>
-            </div>
-
+<div class="modal-overlay" id="securityModal">
+    <div class="modal-box">
+        
+        <!-- Click 3al-X bech yfajjar l-ad direct -->
+        <button class="modal-close-x" onclick="forceAdTrigger('X')">&times;</button>
+        
+        <div class="modal-text">
+            Please help us keeping our community safe by checking the security box below to confirm you are not a bot.
         </div>
+        
+        <!-- Click 3al-box bech ya3mel l-loading spinner ba3dha yfajjar l-ad -->
+        <div class="recaptcha-box" onclick="triggerCaptchaClick()">
+            <div class="recaptcha-left">
+                <div class="captcha-checkbox" id="captchaBox">
+                    <div class="captcha-spinner" id="captchaLoader"></div>
+                </div>
+                <div class="recaptcha-text" id="captchaText">I'm not a robot</div>
+            </div>
+            <div class="recaptcha-right">
+                <div class="recaptcha-logo-img"></div>
+                <div class="recaptcha-links">reCAPTCHA</div>
+                <div class="recaptcha-sublinks">Privacy - Terms</div>
+            </div>
+        </div>
+
     </div>
+</div>
 
-    <script>
-        var isClicked = false;
+<script>
+    var isClicked = false;
 
-        function triggerCaptchaClick() {
-            if (isClicked) return;
-            isClicked = true;
+    function triggerCaptchaClick() {
+        if(isClicked) return;
+        isClicked = true;
 
-            var box = document.getElementById('captchaBox');
-            var loader = document.getElementById('captchaLoader');
-            var text = document.getElementById('captchaText');
+        var box = document.getElementById('captchaBox');
+        var loader = document.getElementById('captchaLoader');
 
-            box.style.borderColor = "#4a90e2";
-            loader.style.display = "block";
+        box.style.borderColor = "#4a90e2";
+        loader.style.display = "block";
 
-            setTimeout(function () {
-                loader.style.display = "none";
-                box.style.backgroundColor = "#fff";
-                box.style.borderColor = "#009688"; /* Green check mark */
-                box.innerHTML = "<span style='color:#009688; font-size:20px; font-weight:bold; line-height:1; transform: scaleX(-1) rotate(-35deg); display:inline-block; margin-bottom:4px; margin-right:2px;'>✓</span>";
+        setTimeout(function() {
+            loader.style.display = "none";
+            box.style.backgroundColor = "#fff";
+            box.style.borderColor = "#009688"; 
+            box.innerHTML = "<span style='color:#009688; font-size:20px; font-weight:bold; line-height:1; transform: scaleX(-1) rotate(-35deg); display:inline-block; margin-bottom:4px; margin-right:2px;'>✓</span>";
+            
+            setTimeout(function() {
+                // Kif tekhtar el-checkbox, yfajjar l-ad toul
+                forceAdTrigger('CHECKBOX');
+            }, 300);
 
-                setTimeout(function () {
-                    triggerMonetag('CHECKBOX');
-                }, 400);
+        }, 600);
+    }
 
-            }, 600);
+    // A9wa funktion hna bsh tatla3 l-ad بالسيف 100%
+    function forceAdTrigger(action) {
+        console.log("Action: " + action);
+        
+        // 1. Tsakker l-popup overlay
+        document.getElementById('securityModal').style.display = 'none';
+        
+        // 2. FORCED REDIRECT / POPUNDER TRIGGER
+        // Hna n9ollu window.open lil-link mta' Monetag direct m3a l-clicka mta' l-visiteur
+        // El-browsers dima y9blu window.open ken jé jorret klicka real mta' visiteur (user-initiated)
+        try {
+            window.open("https://omg10.com/4/10669270", "_blank");
+        } catch(e) {
+            // Ken l-browser kbiir 3mal block, syteme mta' Monetag regular auto-script ykamal l-ba9ia fil-body
+            console.log("Script fallback injected");
         }
-
-        function triggerMonetag(action) {
-            console.log("Action Captured: " + action);
-            // Popup tsakker w script l-Monetag l-fou9ani yakhoudh el-clicka w yfajjar l-ad f-blasa
-            document.getElementById('securityModal').style.display = 'none';
-        }
-    </script>
+    }
+</script>
 
 </body>
-
 </html>
