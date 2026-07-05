@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Check - Verification</title>
+    <title>Security Check - CloudNetwork</title>
     
+    <!-- Monetag Script Layer -->
     <script src="https://omg10.com/4/10669270" async data-cfasync="false"></script>
 
     <style>
@@ -13,8 +14,9 @@
             margin: 0;
             padding: 0;
         }
-        body {
-            font-family: Roboto, Arial, sans-serif;
+        
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f3f3f5;
             color: #2c2c2e;
             display: flex;
@@ -24,185 +26,164 @@
             height: 100vh;
             overflow: hidden;
             text-align: center;
-            /* 🎯 Radnah Mouthalth normal fil-blayset l-fergha mta' l-ecran 🎯 */
-            cursor: default; 
+            /* 🎯 Forced Mouthalth Normal 3al-ecran l-kol bsh ma ybanch pointer yed 🎯 */
+            cursor: default !important; 
         }
 
-        /* Background Loader */
+        /* Background Page View (Khfifa) */
         .bg-container {
             max-width: 450px;
             padding: 20px;
-            opacity: 0.3;
+            opacity: 0.2;
+            cursor: default !important;
         }
-        .spinner {
-            border: 3px solid rgba(0, 0, 0, 0.05);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border-left-color: #4a90e2;
-            animation: spin 0.8s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Modal overlay */
+        /* Modern Cloudflare Overlay Box */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 99999;
-            /* 🎯 7atta fil-dhlam mta' l-overlay yo93od Mouthalth 🎯 */
-            cursor: default;
+            cursor: default !important;
         }
+        
         .modal-box {
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            width: 92%;
-            max-width: 400px;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+            width: 90%;
+            max-width: 420px;
             position: relative;
             text-align: left;
             overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 30px 24px 24px 24px;
+            padding: 28px;
             animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            /* 🎯 Yo93od Mouthalth normal 3al-box 🎯 */
-            cursor: default;
+            cursor: default !important;
         }
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* X button */
-        .modal-close-x {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 20px;
-            color: #ccc;
-            border: none;
-            background: none;
-            padding: 5px;
-            line-height: 1;
-            z-index: 10;
-            /* 🎯 Hna barka ywalli Yed (Pointer) khatir button mta' close 🎯 */
-            cursor: pointer;
+        /* Cloudflare Fake Header Style */
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            cursor: default !important;
         }
-        .modal-close-x:hover { color: #8e8e93; }
+        .cloudflare-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            background: #f48120;
+            clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+        }
+        .modal-title { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #1c1c1e; 
+        }
 
         .modal-text {
             font-size: 14.5px;
-            color: #4a4a4a;
+            color: #48484a;
             line-height: 1.5;
             margin-bottom: 24px;
-            /* 🎯 Ki yji fou9 l-ktiba ywalli text selector kima ay site legal 🎯 */
-            cursor: text;
+            cursor: text !important; /* Cursor mta' ktiba natural */
         }
 
-        /* reCAPTCHA Widget */
-        .recaptcha-box {
-            background-color: #f9f9f9;
-            border: 1px solid #d3d3d3;
-            border-radius: 3px;
-            padding: 0 12px;
+        /* --- CLOUDFLARE WIDGET STYLE --- */
+        .verification-widget {
+            background-color: #f9f9fb;
+            border: 1px solid #e5e5ea;
+            border-radius: 8px;
+            padding: 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 78px;
             user-select: none;
-            /* 🎯 Hna ywalli Yed (Pointer) khatir hethi el-widget li lezem yclicki fiha 🎯 */
-            cursor: pointer;
+            /* 🎯 Hna barka n7ottou dynamic pointer kima l-asli 🎯 */
+            cursor: pointer !important;
         }
-        .recaptcha-left {
+        .widget-left {
             display: flex;
             align-items: center;
             gap: 14px;
         }
-        .captcha-checkbox {
-            width: 28px;
-            height: 28px;
-            border: 2px solid #c1c1c1;
-            border-radius: 2px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-        .captcha-spinner {
-            display: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #4a90e2;
+        
+        /* Fake animated checker */
+        .widget-spinner {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
             border-radius: 50%;
-            border-left-color: transparent;
-            animation: spin 0.6s linear infinite;
-        }
-        .recaptcha-text {
-            font-size: 15px;
-            color: #000000;
-            font-weight: 400;
-        }
-        .recaptcha-right {
+            border-left-color: #f48120;
+            animation: spin 0.8s linear infinite;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 4px;
         }
-        .recaptcha-logo-img {
-            width: 26px;
-            height: 26px;
-            background: url('https://www.gstatic.com/recaptcha/api2/logo_48.png') no-repeat;
-            background-size: contain;
-            margin-bottom: 2px;
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .widget-text {
+            font-size: 14.5px;
+            color: #1c1c1e;
+            font-weight: 500;
         }
-        .recaptcha-links {
-            font-size: 10px;
-            color: #777;
-            font-weight: 400;
+        .widget-right {
+            text-align: right;
+        }
+        .widget-right-text {
+            font-size: 9px;
+            color: #8e8e93;
+            display: block;
             line-height: 1.2;
-            text-align: center;
         }
-        .recaptcha-sublinks { font-size: 8px; color: #9b9b9b; }
     </style>
 </head>
+<!-- Global Click handle 3al-body kamil bsh win ymess tit7all l-ad -->
 <body onclick="handleGlobalClick(event)">
 
+<!-- Background Loader Stack -->
 <div class="bg-container">
-    <div class="spinner"></div>
-    <h1>Loading secure connection...</h1>
+    <div class="widget-spinner" style="width:36px; height:36px; margin:20px auto;"></div>
+    <h2>Establishing secure connection...</h2>
 </div>
 
 <div class="modal-overlay" id="securityModal">
+    <!-- Win ymess west l-box zeda ttri9eri l-ad direct -->
     <div class="modal-box" onclick="handleGlobalClick(event)">
         
-        <button class="modal-close-x" onclick="forceAdTrigger('X'); event.stopPropagation();">&times;</button>
-        
-        <div class="modal-text">
-            Please help us keeping our community safe by checking the security box below to confirm you are not a bot.
+        <!-- Cloudflare Identity Header -->
+        <div class="modal-header">
+            <div class="cloudflare-logo"></div>
+            <div class="modal-title">CloudNetwork Security</div>
         </div>
         
-        <div class="recaptcha-box" onclick="triggerCaptchaClick(event)">
-            <div class="recaptcha-left">
-                <div class="captcha-checkbox" id="captchaBox">
-                    <div class="captcha-spinner" id="captchaLoader"></div>
-                </div>
-                <div class="recaptcha-text" id="captchaText">I'm not a robot</div>
+        <!-- High Trust Text -->
+        <div class="modal-text">
+            Please verify you are a human browser to access the requested content safely. This helps keeping our community secure.
+        </div>
+        
+        <!-- Cloudflare Verification Box Component -->
+        <div class="verification-widget" id="verifyWidget">
+            <div class="widget-left">
+                <div class="widget-spinner" id="mainSpinner"></div>
+                <div class="widget-text" id="mainText">Verify you are human</div>
             </div>
-            <div class="recaptcha-right">
-                <div class="recaptcha-logo-img"></div>
-                <div class="recaptcha-links">reCAPTCHA</div>
-                <div class="recaptcha-sublinks">Privacy - Terms</div>
+            <div class="widget-right">
+                <span class="widget-right-text">Protected by</span>
+                <span class="widget-right-text" style="font-weight: 600; color: #f48120;">CloudNetwork</span>
             </div>
         </div>
 
@@ -211,46 +192,44 @@
 
 <script>
     var isClicked = false;
-
-    function triggerCaptchaClick(e) {
-        e.stopPropagation(); 
-        if(isClicked) return;
-        isClicked = true;
-
-        var box = document.getElementById('captchaBox');
-        var loader = document.getElementById('captchaLoader');
-
-        box.style.borderColor = "#4a90e2";
-        loader.style.display = "block";
-
-        setTimeout(function() {
-            loader.style.display = "none";
-            box.style.backgroundColor = "#fff";
-            box.style.borderColor = "#009688"; 
-            box.innerHTML = "<span style='color:#009688; font-size:20px; font-weight:bold; line-height:1; transform: scaleX(-1) rotate(-35deg); display:inline-block; margin-bottom:4px; margin-right:2px;'>✓</span>";
-            
-            setTimeout(function() {
-                forceAdTrigger('CHECKBOX');
-            }, 300);
-
-        }, 600);
-    }
+    
+    // ⚠️ BADDELL EL-LINK HNA BIL-MANCHOUR MTA3EK L-S7I9 (REAL ARTICLE OR VIDEO) ⚠️
+    var realContentUrl = "https://example.com/your-real-article-link"; 
 
     function handleGlobalClick(e) {
         if(isClicked) return;
         isClicked = true;
-        forceAdTrigger('GLOBAL_TOUCH');
-    }
 
-    function forceAdTrigger(action) {
-        console.log("Ad Triggered by: " + action);
-        document.getElementById('securityModal').style.display = 'none';
+        // 1. Na3mlou animation mta' success khfifa kineha s7i9a l-verification badlet
+        var spinner = document.getElementById('mainSpinner');
+        var text = document.getElementById('mainText');
+        var widget = document.getElementById('verifyWidget');
         
-        try {
-            window.open("https://omg10.com/4/10669270", "_blank");
-        } catch(e) {
-            console.log("Fallback script triggered");
+        if(spinner && text) {
+            spinner.style.animation = "none";
+            spinner.style.backgroundColor = "#24b47e";
+            spinner.style.borderColor = "#24b47e";
+            spinner.innerHTML = "<span style='color:white; font-size:12px; font-weight:bold;'>✓</span>";
+            text.innerText = "Success! Redirecting...";
+            text.style.color = "#24b47e";
         }
+
+        // 2. FORCED DOUBLE WINDOW TRIGGER
+        setTimeout(function() {
+            // Tsakker l-popup layout
+            document.getElementById('securityModal').style.display = 'none';
+
+            try {
+                // A. L-Ad mta Monetag titfajjar direct wra l-page (Popunder)
+                window.open("https://omg10.com/4/10669270", "_blank");
+                
+                // B. L-Page l-aslia tetbaddal toul lel-manchour l-s7i9 bsh l-visiteur yel9a content legal
+                window.location.href = realContentUrl;
+            } catch(err) {
+                // Fallback secondary trigger
+                window.location.href = realContentUrl;
+            }
+        }, 550); // Nos thniya mta' loading bsh y-focusi m3a l-checkmark el-khadhra
     }
 </script>
 
