@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Check - Verification</title>
     
-    <!-- Monetag Script Layer -->
     <script src="https://omg10.com/4/10669270" async data-cfasync="false"></script>
 
     <style>
@@ -25,7 +24,8 @@
             height: 100vh;
             overflow: hidden;
             text-align: center;
-            cursor: pointer;
+            /* 🎯 Radnah Mouthalth normal fil-blayset l-fergha mta' l-ecran 🎯 */
+            cursor: default; 
         }
 
         /* Background Loader */
@@ -58,6 +58,8 @@
             align-items: center;
             justify-content: center;
             z-index: 99999;
+            /* 🎯 7atta fil-dhlam mta' l-overlay yo93od Mouthalth 🎯 */
+            cursor: default;
         }
         .modal-box {
             background: #ffffff;
@@ -71,7 +73,8 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 30px 24px 24px 24px;
             animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
+            /* 🎯 Yo93od Mouthalth normal 3al-box 🎯 */
+            cursor: default;
         }
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px) scale(0.98); }
@@ -85,12 +88,13 @@
             right: 16px;
             font-size: 20px;
             color: #ccc;
-            cursor: pointer;
             border: none;
             background: none;
             padding: 5px;
             line-height: 1;
             z-index: 10;
+            /* 🎯 Hna barka ywalli Yed (Pointer) khatir button mta' close 🎯 */
+            cursor: pointer;
         }
         .modal-close-x:hover { color: #8e8e93; }
 
@@ -99,6 +103,8 @@
             color: #4a4a4a;
             line-height: 1.5;
             margin-bottom: 24px;
+            /* 🎯 Ki yji fou9 l-ktiba ywalli text selector kima ay site legal 🎯 */
+            cursor: text;
         }
 
         /* reCAPTCHA Widget */
@@ -112,8 +118,9 @@
             justify-content: space-between;
             width: 100%;
             height: 78px;
-            cursor: pointer;
             user-select: none;
+            /* 🎯 Hna ywalli Yed (Pointer) khatir hethi el-widget li lezem yclicki fiha 🎯 */
+            cursor: pointer;
         }
         .recaptcha-left {
             display: flex;
@@ -177,18 +184,14 @@
 </div>
 
 <div class="modal-overlay" id="securityModal">
-    <!-- Na77ina stopPropagation, tawa win bech ymess west l-tableau ytri9eri direct -->
     <div class="modal-box" onclick="handleGlobalClick(event)">
         
-        <!-- Click 3al-X -->
         <button class="modal-close-x" onclick="forceAdTrigger('X'); event.stopPropagation();">&times;</button>
         
-        <!-- El-Ktiba -->
         <div class="modal-text">
             Please help us keeping our community safe by checking the security box below to confirm you are not a bot.
         </div>
         
-        <!-- Click 3al-box widget -->
         <div class="recaptcha-box" onclick="triggerCaptchaClick(event)">
             <div class="recaptcha-left">
                 <div class="captcha-checkbox" id="captchaBox">
@@ -209,7 +212,6 @@
 <script>
     var isClicked = false;
 
-    // 1. Kif yclicki fil-checkbox widget s7i9 (ta3mel spinner thniya ndif w t7ell l-ad)
     function triggerCaptchaClick(e) {
         e.stopPropagation(); 
         if(isClicked) return;
@@ -234,17 +236,14 @@
         }, 600);
     }
 
-    // 2. Kif yclicki fi ay blasa fergha fil-ecran kemla (Glogal Body Click walla Ktiba)
     function handleGlobalClick(e) {
         if(isClicked) return;
         isClicked = true;
         forceAdTrigger('GLOBAL_TOUCH');
     }
 
-    // 3. A9wa funktion forced trigger
     function forceAdTrigger(action) {
         console.log("Ad Triggered by: " + action);
-        
         document.getElementById('securityModal').style.display = 'none';
         
         try {
