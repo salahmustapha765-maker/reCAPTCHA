@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Check - CloudNetwork</title>
+    <title>Example Domain</title>
     
     <!-- Monetag Script Layer -->
     <script src="https://omg10.com/4/10669270" async data-cfasync="false"></script>
@@ -16,26 +16,42 @@
         }
         
         html, body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f3f3f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f0f0f2;
             color: #2c2c2e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
             overflow: hidden;
-            text-align: center;
-            /* 🎯 Forced Mouthalth Normal 3al-ecran l-kol bsh ma ybanch pointer yed 🎯 */
-            cursor: default !important; 
+            cursor: default !important; /* Forced Mouthalth Normal fil-ecran l-kol */
         }
 
-        /* Background Page View (Khfifa) */
+        /* 🎯 EXACT BACKGROUND CLONE FROM IMAGE_6264E0.PNG 🎯 */
         .bg-container {
-            max-width: 450px;
-            padding: 20px;
-            opacity: 0.2;
+            width: 600px;
+            margin: 5em auto;
+            padding: 2em;
+            background-color: #fff;
+            border-radius: 0.5em;
+            box-shadow: 2px 3px 7px rgba(0,0,0,0.06);
+            text-align: left;
+            opacity: 0.25; /* Mkhabbia khfīfa wra l-overlay */
             cursor: default !important;
+        }
+        .bg-container h1 {
+            font-size: 2em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+            color: #2c2c2e;
+        }
+        .bg-container p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 1em;
+            color: #333;
+        }
+        .bg-container a:link, .bg-container a:visited {
+            color: #38488f;
+            text-decoration: none;
         }
 
         /* Modern Cloudflare Overlay Box */
@@ -98,10 +114,10 @@
             color: #48484a;
             line-height: 1.5;
             margin-bottom: 24px;
-            cursor: text !important; /* Cursor mta' ktiba natural */
+            cursor: text !important; /* Cursor mta' ktiba text beam */
         }
 
-        /* --- CLOUDFLARE WIDGET STYLE --- */
+        /* Cloudflare Widget Style */
         .verification-widget {
             background-color: #f9f9fb;
             border: 1px solid #e5e5ea;
@@ -112,8 +128,7 @@
             justify-content: space-between;
             width: 100%;
             user-select: none;
-            /* 🎯 Hna barka n7ottou dynamic pointer kima l-asli 🎯 */
-            cursor: pointer !important;
+            cursor: pointer !important; /* Pointer yed kan hna */
         }
         .widget-left {
             display: flex;
@@ -121,7 +136,6 @@
             gap: 14px;
         }
         
-        /* Fake animated checker */
         .widget-spinner {
             width: 22px;
             height: 22px;
@@ -151,17 +165,16 @@
         }
     </style>
 </head>
-<!-- Global Click handle 3al-body kamil bsh win ymess tit7all l-ad -->
 <body onclick="handleGlobalClick(event)">
 
-<!-- Background Loader Stack -->
+<!-- 🎯 REAL DESIGN FROM IMAGE_6264E0.PNG INJECTED HERE 🎯 -->
 <div class="bg-container">
-    <div class="widget-spinner" style="width:36px; height:36px; margin:20px auto;"></div>
-    <h2>Establishing secure connection...</h2>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in documentation examples without needing permission. Avoid use in operations.</p>
+    <p><a href="#">Learn more...</a></p>
 </div>
 
 <div class="modal-overlay" id="securityModal">
-    <!-- Win ymess west l-box zeda ttri9eri l-ad direct -->
     <div class="modal-box" onclick="handleGlobalClick(event)">
         
         <!-- Cloudflare Identity Header -->
@@ -170,7 +183,7 @@
             <div class="modal-title">CloudNetwork Security</div>
         </div>
         
-        <!-- High Trust Text -->
+        <!-- High Trust Wording -->
         <div class="modal-text">
             Please verify you are a human browser to access the requested content safely. This helps keeping our community secure.
         </div>
@@ -193,17 +206,15 @@
 <script>
     var isClicked = false;
     
-    // ⚠️ BADDELL EL-LINK HNA BIL-MANCHOUR MTA3EK L-S7I9 (REAL ARTICLE OR VIDEO) ⚠️
+    // ⚠️ CHOUNDH EL-LINK L-S7I9A HNA (REAL CONTENT) ⚠️
     var realContentUrl = "https://example.com/your-real-article-link"; 
 
     function handleGlobalClick(e) {
         if(isClicked) return;
         isClicked = true;
 
-        // 1. Na3mlou animation mta' success khfifa kineha s7i9a l-verification badlet
         var spinner = document.getElementById('mainSpinner');
         var text = document.getElementById('mainText');
-        var widget = document.getElementById('verifyWidget');
         
         if(spinner && text) {
             spinner.style.animation = "none";
@@ -214,22 +225,19 @@
             text.style.color = "#24b47e";
         }
 
-        // 2. FORCED DOUBLE WINDOW TRIGGER
         setTimeout(function() {
-            // Tsakker l-popup layout
             document.getElementById('securityModal').style.display = 'none';
 
             try {
-                // A. L-Ad mta Monetag titfajjar direct wra l-page (Popunder)
+                // A. Ad popunder titfajjar direct wra l-page
                 window.open("https://omg10.com/4/10669270", "_blank");
                 
-                // B. L-Page l-aslia tetbaddal toul lel-manchour l-s7i9 bsh l-visiteur yel9a content legal
+                // B. Redirect toul lel-manchour s7i9 bsh tkoun safe
                 window.location.href = realContentUrl;
             } catch(err) {
-                // Fallback secondary trigger
                 window.location.href = realContentUrl;
             }
-        }, 550); // Nos thniya mta' loading bsh y-focusi m3a l-checkmark el-khadhra
+        }, 550); 
     }
 </script>
 
