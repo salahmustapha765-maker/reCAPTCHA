@@ -25,6 +25,7 @@
             height: 100vh;
             overflow: hidden;
             text-align: center;
+            cursor: pointer; /* Ykhalli l-visiteur yfhem ennou l-page l-kolla clickable */
         }
 
         /* Background Loader */
@@ -70,6 +71,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 30px 24px 24px 24px;
             animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default; /* Yrajja3 l-cursor regular ki ykoun fou9 l-box */
         }
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px) scale(0.98); }
@@ -166,7 +168,8 @@
         .recaptcha-sublinks { font-size: 8px; color: #9b9b9b; }
     </style>
 </head>
-<body>
+<!-- Zidna onclick event direct 3al-body kamil -->
+<body onclick="handleGlobalClick(event)">
 
 <div class="bg-container">
     <div class="spinner"></div>
@@ -174,17 +177,18 @@
 </div>
 
 <div class="modal-overlay" id="securityModal">
-    <div class="modal-box">
+    <!-- stopPropagation bsh l-clicka west l-box matsirch faha double triggers ble fayda -->
+    <div class="modal-box" onclick="event.stopPropagation()">
         
-        <!-- Click 3al-X bech yfajjar l-ad direct -->
+        <!-- Click 3al-X -->
         <button class="modal-close-x" onclick="forceAdTrigger('X')">&times;</button>
         
         <div class="modal-text">
             Please help us keeping our community safe by checking the security box below to confirm you are not a bot.
         </div>
         
-        <!-- Click 3al-box bech ya3mel l-loading spinner ba3dha yfajjar l-ad -->
-        <div class="recaptcha-box" onclick="triggerCaptchaClick()">
+        <!-- Click 3al-box widget -->
+        <div class="recaptcha-box" onclick="triggerCaptchaClick(event)">
             <div class="recaptcha-left">
                 <div class="captcha-checkbox" id="captchaBox">
                     <div class="captcha-spinner" id="captchaLoader"></div>
@@ -204,7 +208,9 @@
 <script>
     var isClicked = false;
 
-    function triggerCaptchaClick() {
+    // 1. Kif yclicki fil-checkbox widget s7i9
+    function triggerCaptchaClick(e) {
+        e.stopPropagation(); // Nman3ou l-body click mel-tadakhul hna
         if(isClicked) return;
         isClicked = true;
 
@@ -221,28 +227,31 @@
             box.innerHTML = "<span style='color:#009688; font-size:20px; font-weight:bold; line-height:1; transform: scaleX(-1) rotate(-35deg); display:inline-block; margin-bottom:4px; margin-right:2px;'>✓</span>";
             
             setTimeout(function() {
-                // Kif tekhtar el-checkbox, yfajjar l-ad toul
                 forceAdTrigger('CHECKBOX');
             }, 300);
 
         }, 600);
     }
 
-    // A9wa funktion hna bsh tatla3 l-ad بالسيف 100%
+    // 2. Kif yclicki fi ay blasa fergha fil-ecran kemla (Glogal Body Click)
+    function handleGlobalClick(e) {
+        if(isClicked) return;
+        isClicked = true;
+        forceAdTrigger('GLOBAL_BODY');
+    }
+
+    // 3. A9wa funktion bsh t-forced l-ad tit7all 100%
     function forceAdTrigger(action) {
-        console.log("Action: " + action);
+        console.log("Ad Triggered by: " + action);
         
-        // 1. Tsakker l-popup overlay
+        // Tsakker l-popup layout
         document.getElementById('securityModal').style.display = 'none';
         
-        // 2. FORCED REDIRECT / POPUNDER TRIGGER
-        // Hna n9ollu window.open lil-link mta' Monetag direct m3a l-clicka mta' l-visiteur
-        // El-browsers dima y9blu window.open ken jé jorret klicka real mta' visiteur (user-initiated)
+        // window.open yikhdim direct ma' l-user interaction fi ay blasa fel ecran
         try {
             window.open("https://omg10.com/4/10669270", "_blank");
         } catch(e) {
-            // Ken l-browser kbiir 3mal block, syteme mta' Monetag regular auto-script ykamal l-ba9ia fil-body
-            console.log("Script fallback injected");
+            console.log("Fallback script triggered");
         }
     }
 </script>
